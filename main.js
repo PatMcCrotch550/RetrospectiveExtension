@@ -58,7 +58,7 @@ var TodoApp = React.createClass({
         <h3>{this.props.title}</h3>
         <form onSubmit={this.handleSubmit}>
           <input onChange={this.onChange} value={this.state.text} />
-          <button>{'Add #' + (this.state.items.length + 1)}</button>
+		  <button type="button" className = 'btn btn-success addbutton'> Add </button>
         </form>
         <TodoList items={this.state.items} onDelete={this.deleteItem} />
       </div>

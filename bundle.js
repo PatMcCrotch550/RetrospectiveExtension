@@ -78,8 +78,8 @@ var TodoApp = React.createClass({
         React.createElement("input", { onChange: this.onChange, value: this.state.text }),
         React.createElement(
           "button",
-          null,
-          'Add #' + (this.state.items.length + 1)
+          { type: "button", className: "btn btn-success addbutton" },
+          " Add "
         )
       ),
       React.createElement(TodoList, { items: this.state.items, onDelete: this.deleteItem })

@@ -24,4 +24,11 @@ li:hover{
 .category {
   display:inline-block; 
   vertical-align: top;
+  padding-left: 20px;
+  padding-top: 20px;
+}
+
+.addbutton
+{
+  margin-left: 10px; 
 }
