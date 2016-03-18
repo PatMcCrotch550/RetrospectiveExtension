@@ -37,6 +37,9 @@
             },
 			{
                 "path": "bundle.js", "addressable": true
+            }
+			,{
+                "path": "category.js", "addressable": true
             },
             {
                 "path": "sdk/scripts", "addressable": true
