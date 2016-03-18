@@ -9,3 +9,14 @@ h1.title,
 #query-info-container > ul{
 	padding-left: 15px;
 }
+
+.app{
+    width: 300px;
+    padding: 15px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+li:hover{
+    color:red;
+    cursor: pointer;
+}
