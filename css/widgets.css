@@ -9,3 +9,11 @@ h1.title,
 #query-info-container > ul{
 	padding-left: 15px;
 }
+#sendWI {
+    color: lightblue;
+}
+
+#sendWI > span{
+    width: 20px;
+    height: 5px;
+}
