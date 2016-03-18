@@ -49,6 +49,9 @@
 			},    
             {
                 "path": "gridScript.js", "addressable": true
+            },
+            {
+                "path": "dataStorage.js", "addressable": true
             }
         ]
 
