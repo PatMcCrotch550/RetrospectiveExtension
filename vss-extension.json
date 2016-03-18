@@ -4,32 +4,16 @@
         "version": "1.0.1",
         "name": "My First Set of Extensions",
         "description": "Samples containing different widgets extending dashboards",
-        "publisher": "peterdunlop",
+        "publisher": "petdun",
         "targets": [
             {
                 "id": "Microsoft.VisualStudio.Services"
             }
         ],
-         "contributions": [
-            {
-                "id": "HelloWorldWidget",
-                "type": "ms.vss-dashboards-web.widget",
-                "targets": [
-                    "ms.vss-dashboards-web.widget-catalog"
-                ],
-                "properties": {
-                    "name": "Hello World Widget",
-                    "description": "My first widget",              
-                    "uri": "hello-world.html",
-                    "supportedSizes": [
-                         {
-                                "rowSpan": 1,
-                                "columnSpan": 2
-                            }
-                        ],
-                    "supportedScopes": ["project_team"]
-                }
-            },
+		"scopes": [
+			"vso.work"
+		],
+        "contributions": [
 			{
 				"id": "product-backlog-hub-tab",
 				"type": "ms.vss-web.tab",
@@ -78,7 +62,7 @@
         ],
         "files": [
             {
-                "path": "hello-world.html", "addressable": true
+                "path": "context.html", "addressable": true
             },
             {
                 "path": "sdk/scripts", "addressable": true
@@ -86,9 +70,6 @@
 			{
 			    "path": "css", "addressable": true
 			}
-        ],
-		"scopes":[
-			"vso.work"
-		]
+        ]
 
     }
