@@ -1,7 +1,7 @@
 {
         "manifestVersion": 1,
         "id": "vsts-extensions-myExtensions",
-        "version": "1.0.66",
+        "version": "1.0.67",
         "name": "Sprint Retrospective",
         "description": "Sprint Retrospective Extension",
         "publisher": "petdun",
@@ -49,6 +49,9 @@
 			},    
             {
                 "path": "gridScript.js", "addressable": true
+            },
+            {
+                "path": "dataStorage.js", "addressable": true
             }
         ]
 
