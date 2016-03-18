@@ -33,11 +33,12 @@ li:hover{
   margin-left: 10px; 
 }
 
-<<<<<<< HEAD
+
 li.selected-item{
    font-style: italic;
    font-weight: bold;
-=======
+}
+
 .grid-canvas {
   border: dashed 1px grey;
 }
@@ -62,11 +63,6 @@ li.selected-item{
   color:blue;
   margin-top: 20px;
   margin-left: 20px;
-}
-
-.selected-item{
-  bold;
->>>>>>> a39de2de930f753da0b130377a53e49d205762d0
 }
 
 body {
