@@ -2,9 +2,9 @@
         "manifestVersion": 1,
         "id": "vsts-extensions-myExtensions",
         "version": "1.0.1",
-        "name": "My First Set of Extensions",
-        "description": "Samples containing different widgets extending dashboards",
-        "publisher": "petdun",
+        "name": "Sprint Retrospective",
+        "description": "Sprint Retrospective Extension",
+        "publisher": "hykwon",
         "targets": [
             {
                 "id": "Microsoft.VisualStudio.Services"
@@ -14,6 +14,19 @@
 			"vso.work"
 		],
         "contributions": [
+			 {
+				"id": "retrospective-hub",
+				"type": "ms.vss-web.hub",
+				"description": "Adds a hub to the Work hub group",
+				"targets": [
+					"ms.vss-work-web.work-hub-group"
+				],
+				"properties": {
+					"name": "Retrospective",
+					"order": 100,
+					"uri": "context.html"
+				}
+			},
 			{
 				"id": "product-backlog-hub-tab",
 				"type": "ms.vss-web.tab",
