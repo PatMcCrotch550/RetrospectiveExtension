@@ -1,3 +1,22 @@
+$("#sendWI").click(function(eventData){
+    // Be replaced with the selected real action item
+    var sampleWorkItemData = [
+        {
+            "op": "add",
+            "path": "/fields/System.Title",
+            "value": "JavaScript implementation for Microsoft Account"
+        }
+
+    ];
+    VSS.require(["VSS/Service", "TFS/WorkItemTracking/RestClient"], function (VSS_Service, TFS_Wit_WebApi) {
+        var witClient = VSS_Service.getCollectionClient(TFS_Wit_WebApi.WorkItemTrackingHttpClient);
+         witClient.createWorkItem(sampleWorkItemData, "MyNewProject", "User Story").then(
+            function(workItems) {
+                console.log("Create Succeed!");
+        });
+    });
+});
+
 var TodoList = React.createClass({
   
   propTypes:{
@@ -66,9 +85,9 @@ var TodoApp = React.createClass({
   }
 });
 
-React.render(<TodoApp title={'What went well'}/>, document.getElementById('container1'));
-React.render(<TodoApp title={'What to keep'}/>, document.getElementById('container2'));
-React.render(<TodoApp title={'What to stop'}/>, document.getElementById('container3'));
+ReactDOM.render(<TodoApp title={'What went well'}/>, document.getElementById('container1'));
+ReactDOM.render(<TodoApp title={'What to keep'}/>, document.getElementById('container2'));
+ReactDOM.render(<TodoApp title={'What to stop'}/>, document.getElementById('container3'));
 
 
 
