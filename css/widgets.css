@@ -33,6 +33,33 @@ li:hover{
   margin-left: 10px; 
 }
 
+.grid-canvas {
+  border: dashed 1px grey;
+}
+
+.actionItemGrid {
+  margin-left: 20px;
+}
+
+.actionItemInput {
+  height: 30px;
+  margin-left: 20px;
+  margin-right: 10px;
+  margin-top: 20px;
+}
+
+.addActionItemButton {
+  color: blue;
+  margin-top: 20px;
+}
+
+.sendToWorkItemButton {
+  color:blue;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
 .selected-item{
   bold;
 }
+
