@@ -46,7 +46,10 @@
             },
 			{
 			    "path": "css", "addressable": true
-			}
+			},    
+            {
+                "path": "gridScript.js", "addressable": true
+            }
         ]
 
     }
