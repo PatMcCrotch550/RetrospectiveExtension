@@ -4,6 +4,8 @@ var TodoList = React.createClass({
 
   propTypes: {
     items: React.PropTypes.array,
+	selectedItems: React.PropTypes.array,
+	onSelect: React.PropTypes.func,
     onDelete: React.PropTypes.func
   },
 
@@ -15,15 +17,30 @@ var TodoList = React.createClass({
     }
   },
 
+  select(idx, itemText) {
+    console.log("TodoList select", idx, itemText);
+    if (this.props.onSelect) {
+      console.log("TodoList call this.props.onSelect");
+      this.props.onSelect(idx, itemText);
+    }
+  },
+  
   render: function () {
     var self = this;
     var createItem = function (itemText, index) {
-      var deleteFunction = function () {
-        self.delete(index, itemText);
+      var selectFunction = function () {
+        self.select(index, itemText);
       };
+	  
+	  //var selected = "";
+	  //if (this.props.selectedItems.indexOf(itemText) !== -1){
+		//  selected = "selected-item";
+	  //}
+	  
       return React.createElement(
         "li",
-        { key: index + itemText, onClick: deleteFunction },
+		//{ className: selected },
+        { key: index + itemText, onClick: selectFunction },
         itemText
       );
     };
@@ -43,7 +60,7 @@ var TodoApp = React.createClass({
   },
 
   getInitialState: function () {
-    return { items: [], text: '' };
+    return { items: [], text: '', selectedItems: [] };
   },
 
   onChange: function (e) {
@@ -56,7 +73,15 @@ var TodoApp = React.createClass({
     var nextText = '';
     this.setState({ items: nextItems, text: nextText });
   },
-
+ 
+  selectItem(idx, itemText) {
+    var selectedItem = this.state.items[idx];
+	this.state.selectedItems = this.state.selectedItems.concat([selectedItem]);
+	this.setState({ selectedItems: this.state.selectedItems });
+    console.log("TodoApp.selectItem ", idx, selectedItem);
+	console.log("selectedItems => ", this.state.selectedItems);
+  },
+  
   deleteItem(idx, itemText) {
     var deletedElement = this.state.items.splice(idx, 1);
     this.setState({ items: this.state.items });
@@ -81,7 +106,7 @@ var TodoApp = React.createClass({
           " Add "
         )
       ),
-      React.createElement(TodoList, { items: this.state.items, onDelete: this.deleteItem })
+      React.createElement(TodoList, { items: this.state.items, selectedItems: this.state.selectedItems, onSelect: this.selectItem })
     );
   }
 });
