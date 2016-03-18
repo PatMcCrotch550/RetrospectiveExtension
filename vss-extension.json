@@ -32,6 +32,9 @@
             {
                 "path": "context.html", "addressable": true
             },
+			{
+                "path": "main.js", "addressable": true
+            },
             {
                 "path": "sdk/scripts", "addressable": true
             },
