@@ -2,17 +2,19 @@
 <html>
 <head>
 	<link href="css/widgets.css" rel="stylesheet" type="text/css"></link>
+	<script src="node_modules/requirejs/require.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="sdk/scripts/VSS.SDK.min.js"></script>
-     <script type="text/javascript">VSS.init();</script>
-     <h1>Hello World</h1>
+     <script type="text/javascript">VSS.init({ 
+		 explicitNotifyLoaded: true,
+		 usePlatformScripts: true,
+		 usePlatformStyles: true       
+	 });</script>
+	 <script src="main.js"></script>
+     <h1>Sprint Retrospective</h1>
 	 <div id="main">
 	 </div>
-     <script type="text/javascript">VSS.notifyLoadSucceeded();</script>
-	 <script src="main.js"></script>
 </head>
 <body>
-    <h1 class="title"></h1>
-	Sprint Retrospective
 </body>
 </html>

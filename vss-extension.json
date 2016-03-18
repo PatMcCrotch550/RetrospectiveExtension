@@ -39,6 +39,9 @@
                 "path": "sdk/scripts", "addressable": true
             },
 			{
+                "path": "node_modules/requirejs", "addressable": true
+            },
+			{
 			    "path": "css", "addressable": true
 			}
         ]
