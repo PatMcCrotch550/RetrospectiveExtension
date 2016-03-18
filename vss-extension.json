@@ -1,7 +1,7 @@
 {
         "manifestVersion": 1,
         "id": "vsts-extensions-myExtensions",
-        "version": "1.0.63",
+        "version": "1.0.64",
         "name": "Sprint Retrospective",
         "description": "Sprint Retrospective Extension",
         "publisher": "petdun",

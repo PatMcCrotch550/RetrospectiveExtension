@@ -1,8 +1,3 @@
-$(document).find("#main").append("<div>I HAVE LOADED SUCCESSFULLY</div>");
-
-var React = require('react');
-var ReactDOM = require('react-dom');
-
 var TodoList = React.createClass({
   
   propTypes:{
@@ -30,7 +25,12 @@ var TodoList = React.createClass({
   }
 });
 
+
 var TodoApp = React.createClass({
+ 	propTypes:{
+        title: React.PropTypes.string
+  },
+  
   getInitialState: function() {
     return {items: [], text: ''};
   },
@@ -52,20 +52,23 @@ var TodoApp = React.createClass({
       console.log("TodoApp TodoList.onDelete - > TodoApp.deleteItem ",idx,deletedElement)
       
   },
-  render: function() {
+ render: function() {
     return (
       <div className="app">
-        <h3>What went well</h3>
-        <TodoList items={this.state.items} onDelete={this.deleteItem} />
+        <h3>{this.props.title}</h3>
         <form onSubmit={this.handleSubmit}>
           <input onChange={this.onChange} value={this.state.text} />
           <button>{'Add #' + (this.state.items.length + 1)}</button>
         </form>
+        <TodoList items={this.state.items} onDelete={this.deleteItem} />
       </div>
     );
   }
 });
 
-React.render(<TodoApp />, document.getElementById('container1'));
-React.render(<TodoApp />, document.getElementById('container2'));
-React.render(<TodoApp />, document.getElementById('container3'));
+React.render(<TodoApp title={'What went well'}/>, document.getElementById('container1'));
+React.render(<TodoApp title={'What to keep'}/>, document.getElementById('container2'));
+React.render(<TodoApp title={'What to stop'}/>, document.getElementById('container3'));
+
+
+

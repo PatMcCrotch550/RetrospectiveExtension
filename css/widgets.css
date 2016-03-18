@@ -20,3 +20,8 @@ li:hover{
     color:red;
     cursor: pointer;
 }
+
+.category {
+  display:inline-block; 
+  vertical-align: top;
+}
