@@ -33,7 +33,42 @@ li:hover{
   margin-left: 10px; 
 }
 
+<<<<<<< HEAD
 li.selected-item{
    font-style: italic;
    font-weight: bold;
+=======
+.grid-canvas {
+  border: dashed 1px grey;
+}
+
+.actionItemGrid {
+  margin-left: 20px;
+}
+
+.actionItemInput {
+  height: 30px;
+  margin-left: 20px;
+  margin-right: 10px;
+  margin-top: 20px;
+}
+
+.addActionItemButton {
+  color: blue;
+  margin-top: 20px;
+}
+
+.sendToWorkItemButton {
+  color:blue;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.selected-item{
+  bold;
+>>>>>>> a39de2de930f753da0b130377a53e49d205762d0
+}
+
+body {
+  overflow: scroll;
 }

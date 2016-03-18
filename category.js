@@ -1,3 +1,6 @@
+
+var globalSelectedItems = [];
+
 var TodoList = React.createClass({
   displayName: "TodoList",
 
@@ -93,6 +96,7 @@ var TodoApp = React.createClass({
 		console.log("TodoApp unselected ", selectedItem);	
 	}
     
+    globalSelectedItems = this.state.selectedItems;
 	console.log("selectedItems => ", this.state.selectedItems);
   },
   

@@ -12,15 +12,21 @@ VSS.require(["VSS/Controls", "VSS/Controls/Grids"],
 
      var dataSource = [];
 
-    addActionItemContainer.append($("<input class='actionItemInput' type='text'></input>").change((e) => { 
+    addActionItemContainer.append($("<input class='actionItemInput' placeholder='Action Item Name...' type='text'></input>").change((e) => { 
         curItem = e.target.value 
     }));
-    addActionItemContainer.append($("<button>Add Action Item</button>").click(() => {
-        dataSource.push({key: curItem, value: "This is a new item"});
+    addActionItemContainer.append($("<button class='addActionItemButton'>Add Action Item</button>").click(() => {
+
+        var groupedThoughtString = "";
+        for(var i = 0; i < globalSelectedItems.length; i++){
+            groupedThoughtString = groupedThoughtString + ", " + globalSelectedItems[i];
+        }
+
+        dataSource.push({key: curItem, value: groupedThoughtString});
         $(".actionItemInput").val("");
         grid.setDataSource(dataSource);
       }));
-    sendToWorkItemContainer.append($("<button>Send to work items</button>").click(() => {
+    sendToWorkItemContainer.append($("<button class='sendToWorkItemButton'>Send to work items</button>").click(() => {
         var workItems = [];
         var selectedActionItems = grid.getSelectedDataIndices();
         for(var i = 0; i < selectedActionItems.length; i++) {
@@ -29,9 +35,9 @@ VSS.require(["VSS/Controls", "VSS/Controls/Grids"],
         console.log(workItems);
       }));
     
-    $(document).find("#actionItemGrid").append(addActionItemContainer);
-    $(document).find("#actionItemGrid").append(container);
-    $(document).find("#actionItemGrid").append(sendToWorkItemContainer);
+    $(document).find(".actionItemGrid").append(addActionItemContainer);
+    $(document).find(".actionItemGrid").append(container);
+    $(document).find(".actionItemGrid").append(sendToWorkItemContainer);
      // Initialize the grid control with two colums, "key" and "value"
     
       grid = Controls.create(Grids.Grid, container , {
