@@ -16,7 +16,13 @@ VSS.require(["VSS/Controls", "VSS/Controls/Grids"],
         curItem = e.target.value 
     }));
     addActionItemContainer.append($("<button class='addActionItemButton'>Add Action Item</button>").click(() => {
-        dataSource.push({key: curItem, value: "This is a new item"});
+
+        var groupedThoughtString = "";
+        for(var i = 0; i < globalSelectedItems.length; i++){
+            groupedThoughtString = groupedThoughtString + ", " + globalSelectedItems[i];
+        }
+
+        dataSource.push({key: curItem, value: groupedThoughtString});
         $(".actionItemInput").val("");
         grid.setDataSource(dataSource);
       }));
@@ -47,4 +53,23 @@ VSS.require(["VSS/Controls", "VSS/Controls/Grids"],
          source: dataSource
      });
  });
-  
+ 
+ 
+ $("#sendWI").click(function(eventData){
+    // Be replaced with the selected real action item
+    var sampleWorkItemData = [
+        {
+            "op": "add",
+            "path": "/fields/System.Title",
+            "value": "JavaScript implementation for Microsoft Account"
+        }
+
+    ];
+    VSS.require(["VSS/Service", "TFS/WorkItemTracking/RestClient"], function (VSS_Service, TFS_Wit_WebApi) {
+        var witClient = VSS_Service.getCollectionClient(TFS_Wit_WebApi.WorkItemTrackingHttpClient);
+         witClient.createWorkItem(sampleWorkItemData, "MyNewProject", "User Story").then(
+            function(workItems) {
+                console.log("Create Succeed!");
+        });
+    });
+});
