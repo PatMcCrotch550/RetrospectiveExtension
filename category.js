@@ -65,7 +65,16 @@ var TodoApp = React.createClass({
   },
 
   getInitialState: function () {
-    return { items: [], text: '', selectedItems: [] };
+
+     if(this.props.title === 'What went well') {
+      return { items: wellThoughts, text: '', selectedItems: [] };
+    }
+    else if (this.props.title === 'What to keep'){
+      return { items: keepThoughts, text: '', selectedItems: [] };
+    }
+    else {
+      return { items: stopThoughts, text: '', selectedItems: [] };
+    }
   },
 
   onChange: function (e) {
@@ -75,6 +84,15 @@ var TodoApp = React.createClass({
   handleSubmit: function (e) {
     e.preventDefault();
     var nextItems = this.state.items.concat([this.state.text]);
+    if(this.props.title === 'What went well') {
+      addWellThought(nextItems);
+    }
+    else if (this.props.title === 'What to keep'){
+      addKeepThought(nextItems);
+    }
+    else {
+      addStopThought(nextItems);
+    }
     var nextText = '';
     this.setState({ items: nextItems, text: nextText });
   },
@@ -129,6 +147,9 @@ var TodoApp = React.createClass({
   }
 });
 
-React.render(React.createElement(TodoApp, { title: 'What went well' }), document.getElementById('container1'));
-React.render(React.createElement(TodoApp, { title: 'What to keep' }), document.getElementById('container2'));
-React.render(React.createElement(TodoApp, { title: 'What to stop' }), document.getElementById('container3'));
+var renderThoughtCategories = () => {
+
+  React.render(React.createElement(TodoApp, { title: 'What went well' }), document.getElementById('container1'));
+  React.render(React.createElement(TodoApp, { title: 'What to keep' }), document.getElementById('container2'));
+  React.render(React.createElement(TodoApp, { title: 'What to stop' }), document.getElementById('container3'));
+}

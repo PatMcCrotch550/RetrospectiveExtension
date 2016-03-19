@@ -1,18 +1,18 @@
      
+var dataSource = [];
+var grid;
 VSS.require(["VSS/Controls", "VSS/Controls/Grids", "VSS/Controls/Combos"],
 // var Controls = require('VSS/Controls');
 // var Grids = require('VSS/Controls/Grids');
 // var Combos = require('VSS/Controls/Combos');
 
      function (Controls, Grids, Combos) {
-    var container = $("<div></div>");
+         var container = $("<div></div>");
 	var membersContainer = $("<div style='width: 160px; display: inline-block;'></div>");
-    var addActionItemContainer = $("<div></div>");
-    var sendToWorkItemContainer = $("<div></div>");
-    var curItem = "";
-    var grid;
+         var addActionItemContainer = $("<div></div>");
+         var sendToWorkItemContainer = $("<div></div>");
+         var curItem = "";
 
-         var dataSource = [];
 
          addActionItemContainer.append($("<input class='actionItemInput' placeholder='Action Item Name...' type='text'></input>").change((e) => {
              curItem = e.target.value
@@ -35,6 +35,7 @@ VSS.require(["VSS/Controls", "VSS/Controls/Grids", "VSS/Controls/Combos"],
              }
 
              dataSource.push({ title: curItem, assign: identity.getValue(), details: groupedThoughtString });
+            addActionItems(dataSource);
              $(".actionItemInput").val("");
              grid.setDataSource(dataSource);
          }));
