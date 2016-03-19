@@ -18,7 +18,7 @@ VSS.require(["VSS/Controls", "VSS/Controls/Grids"],
     addActionItemContainer.append($("<button class='addActionItemButton'>Add Action Item</button>").click(() => {
 
         var groupedThoughtString = "";
-        for(var i = 0; i < globalSelectedItems.length; i++){
+             for (var i = 0; i < globalSelectedItems.length; i++) {
             groupedThoughtString = groupedThoughtString + ", " + globalSelectedItems[i];
         }
 
@@ -30,10 +30,19 @@ VSS.require(["VSS/Controls", "VSS/Controls/Grids"],
     sendToWorkItemContainer.append($("<button class='sendToWorkItemButton'>Send to work items</button>").click(() => {
         var workItems = [];
         var selectedActionItems = grid.getSelectedDataIndices();
-        for(var i = 0; i < selectedActionItems.length; i++) {
-            workItems.push(dataSource[selectedActionItems[i]]);
+             VSS.require(["VSS/Service", "TFS/WorkItemTracking/RestClient"], function (VSS_Service, TFS_Wit_WebApi) {
+                 for (var i = 0; i < selectedActionItems.length; i++) {
+                     var witClient = VSS_Service.getCollectionClient(TFS_Wit_WebApi.WorkItemTrackingHttpClient);
+                     witClient.createWorkItem([{
+                         "op": "add",
+                         "path": "/fields/System.Title",
+                         "value": "dataSource[selectedActionItems[i]"
+                     }], "Retrospective", "User Story").then(
+                        function (workItems) {
+                            console.log("Create Succeed!");
+                        });
         }
-        console.log(workItems);
+             });
       }));
     
     $(document).find(".actionItemGrid").append(addActionItemContainer);
@@ -41,7 +50,7 @@ VSS.require(["VSS/Controls", "VSS/Controls/Grids"],
     $(document).find(".actionItemGrid").append(sendToWorkItemContainer);
      // Initialize the grid control with two colums, "key" and "value"
     
-      grid = Controls.create(Grids.Grid, container , {
+         grid = Controls.create(Grids.Grid, container, {
          height: "500px", // Explicit height is required for a Grid control
          columns: [
              // text is the column header text. 
@@ -54,4 +63,3 @@ VSS.require(["VSS/Controls", "VSS/Controls/Grids"],
          source: dataSource
      });
  });
-  
