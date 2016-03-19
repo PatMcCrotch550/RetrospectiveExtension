@@ -63,3 +63,11 @@ li:hover{
   bold;
 }
 
+#sendWI {
+    color: lightblue;
+}
+
+#sendWI > span{
+    width: 20px;
+    height: 5px;
+} 

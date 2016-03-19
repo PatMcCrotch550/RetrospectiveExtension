@@ -1,7 +1,7 @@
 {
         "manifestVersion": 1,
         "id": "vsts-extensions-myExtensions",
-        "version": "1.0.67",
+        "version": "1.0.68",
         "name": "Sprint Retrospective",
         "description": "Sprint Retrospective Extension",
         "publisher": "petdun",
@@ -11,7 +11,7 @@
             }
         ],
 		"scopes": [
-			"vso.work"
+			"vso.work_write"
 		],
         "contributions": [
 			 {
