@@ -1,20 +1,32 @@
      
-VSS.require(["VSS/Controls", "VSS/Controls/Grids"],
+VSS.require(["VSS/Controls", "VSS/Controls/Grids", "VSS/Controls/Combos"],
 // var Controls = require('VSS/Controls');
 // var Grids = require('VSS/Controls/Grids');
+// var Combos = require('VSS/Controls/Combos');
 
-     function (Controls, Grids) {
-         var container = $("<div></div>");
-         var addActionItemContainer = $("<div></div>");
-         var sendToWorkItemContainer = $("<div></div>");
-         var curItem = "";
-         var grid;
+     function (Controls, Grids, Combos) {
+    var container = $("<div></div>");
+	var membersContainer = $("<div style='width: 160px; display: inline-block;'></div>");
+    var addActionItemContainer = $("<div></div>");
+    var sendToWorkItemContainer = $("<div></div>");
+    var curItem = "";
+    var grid;
 
          var dataSource = [];
 
          addActionItemContainer.append($("<input class='actionItemInput' placeholder='Action Item Name...' type='text'></input>").change((e) => {
              curItem = e.target.value
          }));
+         
+         	var identity = Controls.create(Combos.Combo, membersContainer, {
+		 allowEdit: true
+     	});
+     	var members = ["Peter", "Becca", "Peng", "Hyung", "Aaron", "Sam", "Jessica", "Pranav", "Wendy", "Sondra", "Eli"];
+     	identity.setSource(members);
+     	identity._currentText = members[0];
+     	
+     	addActionItemContainer.append(membersContainer);
+	
          addActionItemContainer.append($("<button class='addActionItemButton'>Add Action Item</button>").click(() => {
 
              var groupedThoughtString = "";
