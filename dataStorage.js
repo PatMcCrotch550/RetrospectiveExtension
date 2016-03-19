@@ -21,19 +21,19 @@ VSS.getService(VSS.ServiceIds.ExtensionData).then((dataService) => {
 
 
 	setValue = (key, value, callback) => {
-		_dataService.setValue(key, value, {scopeType: "Project Collection"}).then(function(value) {
+		_dataService.setValue(key, value, {scopeType: "User"}).then(function(value) {
 			callback(value);
 		});
 	}
 
 	getValue = (key, callback) => {
-		_dataService.getValue(key, {scopeType: "Project Collection"}).then(function(value) {
+		_dataService.getValue(key, {scopeType: "User"}).then(function(value) {
 			callback(value);
 		});
 	}
 
 	getValue("wellThoughts", (value) => {
-		if(value = null){
+		if(!value){
 			setValue("wellThoughts", [], (setValue) => {
 				wellThoughts = setValue;
 				if(wellThoughts && keepThoughts && stopThoughts) {
@@ -51,7 +51,7 @@ VSS.getService(VSS.ServiceIds.ExtensionData).then((dataService) => {
 
 	});
 	getValue("keepThoughts", (value) => {
-		if(value = null){
+		if(!value){
 			setValue("keepThoughts", [], (setValue) => {
 				keepThoughts = setValue;
 				if(wellThoughts && keepThoughts && stopThoughts) {
@@ -67,7 +67,7 @@ VSS.getService(VSS.ServiceIds.ExtensionData).then((dataService) => {
 
 	});
 	getValue("stopThoughts", (value) => {
-		if(value = null){
+		if(!value){
 			setValue("stopThoughts", [], (setValue) => {
 				stopThoughts = setValue;
 				if(wellThoughts && keepThoughts && stopThoughts) {
@@ -84,7 +84,7 @@ VSS.getService(VSS.ServiceIds.ExtensionData).then((dataService) => {
 	});
 
 	getValue("actionItems", (value) => {
-		if(value = null){
+		if(!value){
 			setValue("actionItems", [], (setValue) => {
 				allActionItems = setValue;
 			});

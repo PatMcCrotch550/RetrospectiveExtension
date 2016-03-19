@@ -1,55 +1,62 @@
 {
-        "manifestVersion": 1,
-        "id": "vsts-extensions-myExtensions",
-        "version": "1.0.68",
-        "name": "Sprint Retrospective",
-        "description": "Sprint Retrospective Extension",
-        "publisher": "petdun",
-        "targets": [
-            {
-                "id": "Microsoft.VisualStudio.Services"
+    "manifestVersion": 1,
+    "id": "vsts-extensions-myExtensions",
+    "version": "1.0.69",
+    "name": "Sprint Retrospective",
+    "description": "Sprint Retrospective Extension",
+    "publisher": "petdun",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "scopes": [
+        "vso.work_write"
+    ],
+    "contributions": [
+        {
+            "id": "retrospective-hub",
+            "type": "ms.vss-web.hub",
+            "description": "Adds a hub to the Work hub group",
+            "targets": [
+                "ms.vss-work-web.work-hub-group"
+            ],
+            "properties": {
+                "name": "Retrospective",
+                "order": 100,
+                "uri": "context.html"
             }
-        ],
-		"scopes": [
-			"vso.work_write"
-		],
-        "contributions": [
-			 {
-				"id": "retrospective-hub",
-				"type": "ms.vss-web.hub",
-				"description": "Adds a hub to the Work hub group",
-				"targets": [
-					"ms.vss-work-web.work-hub-group"
-				],
-				"properties": {
-					"name": "Retrospective",
-					"order": 100,
-					"uri": "context.html"
-				}
-			}
-        ],
-        "files": [
-            {
-                "path": "context.html", "addressable": true
-            },
-			{
-                "path": "bundle.js", "addressable": true
-            }
-			,{
-                "path": "category.js", "addressable": true
-            },
-            {
-                "path": "sdk/scripts", "addressable": true
-            },
-			{
-			    "path": "css", "addressable": true
-			},    
-            {
-                "path": "gridScript.js", "addressable": true
-            },
-            {
-                "path": "dataStorage.js", "addressable": true
-            }
-        ]
+        }
+    ],
+    "files": [
+        {
+            "path": "context.html",
+            "addressable": true
+        },
+        {
+            "path": "bundle.js",
+            "addressable": true
+        },
+        {
+            "path": "category.js",
+            "addressable": true
+        },
+        {
+            "path": "sdk/scripts",
+            "addressable": true
+        },
+        {
+            "path": "css",
+            "addressable": true
+        },
+        {
+            "path": "gridScript.js",
+            "addressable": true
+        },
+        {
+            "path": "dataStorage.js",
+            "addressable": true
+        }
+    ]
 
-    }
+}
