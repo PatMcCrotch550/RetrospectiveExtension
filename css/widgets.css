@@ -21,6 +21,15 @@ li:hover{
     cursor: pointer;
 }
 
+#sendWI {
+    color: lightblue;
+}
+
+#sendWI > span{
+    width: 20px;
+    height: 5px;
+}
+ 
 .category {
   display:inline-block; 
   vertical-align: top;
