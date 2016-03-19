@@ -16,7 +16,13 @@ VSS.require(["VSS/Controls", "VSS/Controls/Grids"],
         curItem = e.target.value 
     }));
     addActionItemContainer.append($("<button class='addActionItemButton'>Add Action Item</button>").click(() => {
-        dataSource.push({key: curItem, value: "This is a new item"});
+
+        var groupedThoughtString = "";
+        for(var i = 0; i < globalSelectedItems.length; i++){
+            groupedThoughtString = groupedThoughtString + ", " + globalSelectedItems[i];
+        }
+
+        dataSource.push({key: curItem, value: groupedThoughtString});
         $(".actionItemInput").val("");
         grid.setDataSource(dataSource);
       }));

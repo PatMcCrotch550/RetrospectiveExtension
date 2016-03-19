@@ -1,6 +1,8 @@
+
+var globalSelectedItems = [];
+
 var TodoList = React.createClass({
   displayName: "TodoList",
-
 
   propTypes: {
     items: React.PropTypes.array,
@@ -32,18 +34,21 @@ var TodoList = React.createClass({
         self.select(index, itemText);
       };
 	  
-	  //var selected = "";
-	  //if (this.props.selectedItems.indexOf(itemText) !== -1){
-		//  selected = "selected-item";
-	  //}
+	  var selected = "";
+	  if (self.props.selectedItems.indexOf(itemText) !== -1){
+		  selected = "selected-item";
+	  }
+	  else{
+		  selected = "";
+	  }
 	  
       return React.createElement(
         "li",
-		//{ className: selected },
-        { key: index + itemText, onClick: selectFunction },
+        { key: index + itemText, className: selected, onClick: selectFunction },
         itemText
       );
     };
+	
     return React.createElement(
       "ul",
       null,
@@ -76,9 +81,22 @@ var TodoApp = React.createClass({
  
   selectItem(idx, itemText) {
     var selectedItem = this.state.items[idx];
-	this.state.selectedItems = this.state.selectedItems.concat([selectedItem]);
-	this.setState({ selectedItems: this.state.selectedItems });
-    console.log("TodoApp.selectItem ", idx, selectedItem);
+	var selectedItems;
+	var index = this.state.selectedItems.indexOf(selectedItem);
+	
+	if (index == -1) {
+		selectedItems = this.state.selectedItems.concat([selectedItem]);
+		this.state.selectedItems = selectedItems;
+		this.setState({ selectedItems: selectedItems });
+		console.log("TodoApp selected  ", selectedItem);	
+	}
+	else {
+		this.state.selectedItems.splice(index, 1);
+		this.setState({ selectedItems: this.state.selectedItems });
+		console.log("TodoApp unselected ", selectedItem);	
+	}
+    
+    globalSelectedItems = this.state.selectedItems;
 	console.log("selectedItems => ", this.state.selectedItems);
   },
   

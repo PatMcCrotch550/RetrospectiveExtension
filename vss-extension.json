@@ -33,9 +33,6 @@
                 "path": "context.html", "addressable": true
             },
 			{
-                "path": "main.js", "addressable": true
-            },
-			{
                 "path": "bundle.js", "addressable": true
             }
 			,{
