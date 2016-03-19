@@ -34,7 +34,7 @@ VSS.require(["VSS/Controls", "VSS/Controls/Grids", "VSS/Controls/Combos"],
                  groupedThoughtString = groupedThoughtString + ", " + globalSelectedItems[i];
              }
 
-             dataSource.push({ key: curItem, value: groupedThoughtString });
+             dataSource.push({ title: curItem, assign: identity.getValue(), details: groupedThoughtString });
              $(".actionItemInput").val("");
              grid.setDataSource(dataSource);
          }));
@@ -67,8 +67,9 @@ VSS.require(["VSS/Controls", "VSS/Controls/Grids", "VSS/Controls/Combos"],
                  // text is the column header text. 
                  // index is the key into the source object to find the data for this column
                  // width is the width of the column, in pixels
-                 { text: "Property key", index: "key", width: 150 },
-                 { text: "Property value", index: "value", width: 600 }
+		 { text: "Title", index: "title", width: 150 },
+		 { text: "Assign to", index: "assign", width: 150 },
+                 { text: "Details", index: "details", width: 600 }
              ],
              // This data source is rendered into the Grid columns defined above
              source: dataSource
