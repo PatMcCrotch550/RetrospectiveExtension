@@ -106,7 +106,7 @@ VSS.getService(VSS.ServiceIds.ExtensionData).then((dataService) => {
 		setValue("stopThoughts", thoughts, $.noop)
 	};
 
-	var addActionItems = (actionItems) => {
+	addActionItems = (actionItems) => {
 		setValue("actionItems", actionItems, $.noop)
 
 	};
