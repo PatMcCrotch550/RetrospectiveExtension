@@ -42,6 +42,12 @@ li:hover{
   margin-left: 10px; 
 }
 
+
+li.selected-item{
+   font-style: italic;
+   font-weight: bold;
+}
+
 .grid-canvas {
   border: dashed 1px grey;
 }
@@ -66,10 +72,6 @@ li:hover{
   color:blue;
   margin-top: 20px;
   margin-left: 20px;
-}
-
-.selected-item{
-  bold;
 }
 
 body {
