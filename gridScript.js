@@ -1,4 +1,6 @@
      
+var dataSource = [];
+var grid;
 VSS.require(["VSS/Controls", "VSS/Controls/Grids"],
 // var Controls = require('VSS/Controls');
 // var Grids = require('VSS/Controls/Grids');
@@ -8,9 +10,7 @@ VSS.require(["VSS/Controls", "VSS/Controls/Grids"],
     var addActionItemContainer = $("<div></div>");
     var sendToWorkItemContainer = $("<div></div>");
     var curItem = "";
-    var grid;
 
-     var dataSource = [];
 
     addActionItemContainer.append($("<input class='actionItemInput' placeholder='Action Item Name...' type='text'></input>").change((e) => { 
         curItem = e.target.value 
@@ -23,6 +23,7 @@ VSS.require(["VSS/Controls", "VSS/Controls/Grids"],
         }
 
         dataSource.push({key: curItem, value: groupedThoughtString});
+        addActionItems(dataSource);
         $(".actionItemInput").val("");
         grid.setDataSource(dataSource);
       }));
