@@ -46,10 +46,11 @@ VSS.require(["VSS/Controls", "VSS/Controls/Grids", "VSS/Controls/Combos"],
              VSS.require(["VSS/Service", "TFS/WorkItemTracking/RestClient"], function (VSS_Service, TFS_Wit_WebApi) {
                  for (var i = 0; i < selectedActionItems.length; i++) {
                      var witClient = VSS_Service.getCollectionClient(TFS_Wit_WebApi.WorkItemTrackingHttpClient);
+					 var title = dataSource[selectedActionItems[i]];
                      witClient.createWorkItem([{
                          "op": "add",
                          "path": "/fields/System.Title",
-                         "value": "dataSource[selectedActionItems[i]"
+                         "value": title
                      }], project, "User Story").then(
                         function (workItems) {
                             console.log("Create Succeed!");
