@@ -42,6 +42,7 @@ VSS.require(["VSS/Controls", "VSS/Controls/Grids", "VSS/Controls/Combos"],
          sendToWorkItemContainer.append($("<button class='sendToWorkItemButton'>Send to work items</button>").click(() => {
              var workItems = [];
              var selectedActionItems = grid.getSelectedDataIndices();
+			 var project = VSS.getWebContext().project.id;
              VSS.require(["VSS/Service", "TFS/WorkItemTracking/RestClient"], function (VSS_Service, TFS_Wit_WebApi) {
                  for (var i = 0; i < selectedActionItems.length; i++) {
                      var witClient = VSS_Service.getCollectionClient(TFS_Wit_WebApi.WorkItemTrackingHttpClient);
@@ -49,7 +50,7 @@ VSS.require(["VSS/Controls", "VSS/Controls/Grids", "VSS/Controls/Combos"],
                          "op": "add",
                          "path": "/fields/System.Title",
                          "value": "dataSource[selectedActionItems[i]"
-                     }], "Retrospective", "User Story").then(
+                     }], project, "User Story").then(
                         function (workItems) {
                             console.log("Create Succeed!");
                         });
